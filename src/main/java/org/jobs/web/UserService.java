@@ -2,6 +2,7 @@ package org.jobs.web;
 
 import org.apache.log4j.Logger;
 import org.jobs.ws.bean.UsersManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.userdetails.UserDetails;
 import org.springframework.security.userdetails.UserDetailsService;
@@ -12,6 +13,9 @@ import org.springframework.security.userdetails.UsernameNotFoundException;
  */
 public class UserService implements UserDetailsService {
 	private static Logger log = Logger.getLogger(UserService.class);
+	
+	@Autowired
+	private UsersManager usersManager;
 
 	public UserService() {
 
@@ -23,7 +27,6 @@ public class UserService implements UserDetailsService {
 		if (log.isDebugEnabled()) {
 			log.debug(String.format("Load user %s", login));
 		}
-		UsersManager usersManager = (UsersManager) null;// FacesUtils.getBean("usersWSClient");
 		UserDetails details = usersManager.getUserByLogin(login);
 		return details;
 	}

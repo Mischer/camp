@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module  rename-to="main">
+
+		<inherits name="com.google.gwt.user.User" />
+    	<inherits name="com.google.gwt.user.theme.standard.Standard" />
+    
+    <inherits name='org.gwt.mosaic.Mosaic' />
+    <inherits name='org.gwt.mosaic.theme.standard.Standard' />
+        
+    <entry-point class="org.jobs.web.gwt.client.MainModule" />
+        
+</module>

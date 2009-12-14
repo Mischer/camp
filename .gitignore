@@ -1,6 +1,7 @@
 target/*
 war/*
 bin/*
+tomcat/*
 .settings/*
 .externalToolBuilders/*
 nb-configuration.xml

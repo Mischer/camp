@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.camp</groupId>
 	<artifactId>camp</artifactId>
@@ -190,16 +188,54 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		-->
 
 		<dependency>
+			<groupId>org.gwt</groupId>
+			<artifactId>mosaic</artifactId>
+			<version>0.3.0-rc1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.allen_sauer</groupId>
+			<artifactId>gwt</artifactId>
+			<version>2.6.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>libideas</artifactId>
+			<version>r1684</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.gwt</groupId>
+			<artifactId>beansbinding</artifactId>
+			<version>0.2.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
 			<version>${gwt.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!--
-			<dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-dev</artifactId> <version>${gwt.version}</version> <classifier>${platform}-libs</classifier>
-			<type>zip</type> <scope>provided</scope> </dependency> <dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-dev</artifactId>
-			<version>${gwt.version}</version> <classifier>${platform}</classifier> <scope>provided</scope> </dependency>
-		-->
+		
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwt.version}</version>
+			<classifier>${platform}-libs</classifier>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwt.version}</version>
+			<classifier>${platform}</classifier>
+			<scope>provided</scope>
+		</dependency>
 		<!-- GWT end -->
 	</dependencies>
 
@@ -244,13 +280,35 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 					</execution>
 				</executions>
 			</plugin>
-			<!--
-				<plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>gwt-maven-plugin</artifactId> <version>1.1</version> <executions> <execution> <configuration>
-				<extraJvmArgs>-Xmx812M -Xss1024k</extraJvmArgs> </configuration> <goals> <goal>compile</goal> </goals> </execution> </executions> <configuration>
-				<runTarget>org.jobs.gwt.JobsPoint/app.html</runTarget> </configuration> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId> <version>2.0.2</version> <configuration> <webXml>war/WEB-INF/web.xml</webXml>
-				<warSourceDirectory>src/main/webapp</warSourceDirectory> </configuration> </plugin>
-			-->
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<configuration>
+							<extraJvmArgs>-Xmx812M -Xss1024k</extraJvmArgs>
+						</configuration>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<runTarget>org.jobs.web.gwt.CampMain/app.html</runTarget>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<webXml>war/WEB-INF/web.xml</webXml>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+				</configuration>
+			</plugin>
+
 			<!-- start deprecated -->
 			<!--
 				<plugin> <groupId>com.totsp.gwt</groupId> <artifactId>maven-googlewebtoolkit2-plugin</artifactId> <version>2.0-RC1</version> <configuration>

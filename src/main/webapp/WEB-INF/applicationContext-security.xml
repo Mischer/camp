@@ -25,8 +25,8 @@
 		 -->
 		<remember-me user-service-ref="userService" />
 		<anonymous/>
-		<form-login login-page="/login.do" login-processing-url="/j_spring_security_check" default-target-url="/main.do"/>
-		<logout logout-url="/login.do?logout=1" /> 
+		<form-login login-page="/login" login-processing-url="/j_spring_security_check" default-target-url="/main"/>
+		<logout logout-url="/login?logout=1" /> 
 	</http>
 	
 	<authentication-provider user-service-ref="userService">
