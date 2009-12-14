@@ -1,0 +1,10 @@
+target/*
+war/*
+bin/*
+.settings/*
+.externalToolBuilders/*
+nb-configuration.xml
+.project
+.classpath
+.springBeans
+main.launch
