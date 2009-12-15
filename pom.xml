@@ -11,11 +11,11 @@
 			<id>gwt-maven2</id>
 			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
 		</pluginRepository>
-	    <pluginRepository>
-      		<id>codehaus-snapshots-repository</id>
-		    <name>codehaus snapshots repository</name>
-      		<url>http://snapshots.repository.codehaus.org</url>
-    	</pluginRepository>
+		<pluginRepository>
+			<id>codehaus-snapshots-repository</id>
+			<name>codehaus snapshots repository</name>
+			<url>http://snapshots.repository.codehaus.org</url>
+		</pluginRepository>
 	</pluginRepositories>
 
 	<repositories>
@@ -188,62 +188,26 @@
 		</dependency>
 		<!-- GWT start -->
 
-		<!--
-			<dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-servlet</artifactId> <version>${gwt.version}</version> <scope>runtime</scope> </dependency>
-		-->
-<!-- 
-		<dependency>
-			<groupId>org.gwt</groupId>
-			<artifactId>mosaic</artifactId>
-			<version>0.3.0-rc1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.allen_sauer</groupId>
-			<artifactId>gwt</artifactId>
-			<version>2.6.5</version>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
-			<artifactId>libideas</artifactId>
-			<version>r1684</version>
-			<scope>provided</scope>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwt.version}</version>
+			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.gwt</groupId>
-			<artifactId>beansbinding</artifactId>
-			<version>0.2.4</version>
-			<scope>provided</scope>
-		</dependency>
- -->
 
-<dependency>
-  <groupId>com.googlecode.gwtmosaic</groupId>
-  <artifactId>gwtx</artifactId>
-  <version>0.3.0-rc1</version>
-</dependency>
+		<!--
+			<dependency> <groupId>org.gwt</groupId> <artifactId>mosaic</artifactId> <version>0.3.0-rc1</version> <scope>provided</scope> </dependency> <dependency>
+			<groupId>com.allen_sauer</groupId> <artifactId>gwt</artifactId> <version>2.6.5</version> <scope>provided</scope> </dependency> <dependency>
+			<groupId>com.google.gwt</groupId> <artifactId>libideas</artifactId> <version>r1684</version> <scope>provided</scope> </dependency> <dependency>
+			<groupId>org.gwt</groupId> <artifactId>beansbinding</artifactId> <version>0.2.4</version> <scope>provided</scope> </dependency>
+		-->
+		<!--
+			<dependency> <groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwtx</artifactId> <version>0.3.0-rc1</version> </dependency> <dependency>
+			<groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwt-beans-binding</artifactId> <version>0.3.0-rc1</version> </dependency> <dependency>
+			<groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwt-dnd</artifactId> <version>0.3.0-rc1</version> </dependency> <dependency>
+			<groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwt-beans-binding</artifactId> <version>0.3.0-rc1</version> </dependency>
+		-->
 
- <dependency>
-  <groupId>com.googlecode.gwtmosaic</groupId>
-  <artifactId>gwt-beans-binding</artifactId>
-  <version>0.3.0-rc1</version>
-</dependency>
-
-<dependency>
-  <groupId>com.googlecode.gwtmosaic</groupId>
-  <artifactId>gwt-dnd</artifactId>
-  <version>0.3.0-rc1</version>
-</dependency>
-
- <dependency>
-  <groupId>com.googlecode.gwtmosaic</groupId>
-  <artifactId>gwt-beans-binding</artifactId>
-  <version>0.3.0-rc1</version>
-</dependency>
- 
- 
- 
 
 		<dependency>
 			<groupId>com.google.gwt</groupId>
@@ -252,27 +216,19 @@
 			<scope>provided</scope>
 		</dependency>
 		<!--
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<version>${gwt.version}</version>
-			<classifier>${platform}-libs</classifier>
-			<type>zip</type>
-			<scope>provided</scope>
-		</dependency>
+			<dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-dev</artifactId> <version>${gwt.version}</version> <classifier>${platform}-libs</classifier>
+			<type>zip</type> <scope>provided</scope> </dependency>
 		-->
 		<dependency>
 			<groupId>com.extjs</groupId>
 			<artifactId>gxt</artifactId>
-			<version>2.0.1</version>
+			<version>2.1.0</version>
 		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<version>${gwt.version}</version>
-			<!-- classifier>${platform}</classifier -->
-			<scope>provided</scope>
-		</dependency>
+
+		<!--
+			<dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-dev</artifactId> <version>${gwt.version}</version> <scope>provided</scope> </dependency>
+		-->
+		<!-- classifier>${platform}</classifier -->
 		<!-- GWT end -->
 	</dependencies>
 
@@ -322,6 +278,11 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
 				<version>1.2-SNAPSHOT</version>
+				<configuration>
+					<disableCastChecking>true</disableCastChecking>
+                  	<disableClassMetadata>true</disableClassMetadata>
+					<runTarget>org.jobs.web.gwt.CampMain/app.html</runTarget>
+				</configuration>
 				<executions>
 					<execution>
 						<configuration>
@@ -329,28 +290,28 @@
 						</configuration>
 						<goals>
 							<goal>compile</goal>
+							<!-- 
 							<goal>generateAsync</goal>
               				<goal>test</goal>
+              				 -->
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<runTarget>org.jobs.web.gwt.CampMain/app.html</runTarget>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.0.2</version>
 				<configuration>
-					<webXml>war/WEB-INF/web.xml</webXml>
-					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+					<warSourceDirectory>war</warSourceDirectory>
 				</configuration>
 			</plugin>
 
 			<!-- start deprecated -->
 			<!--
 				<plugin> <groupId>com.totsp.gwt</groupId> <artifactId>maven-googlewebtoolkit2-plugin</artifactId> <version>2.0-RC1</version> <configuration>
+
 				<logLevel>INFO</logLevel> <gwtHome>${env.GWT_HOME}</gwtHome> <compileTargets> <value>org.jobs.gwt.JobsPoint</value> </compileTargets>
 				<runTarget>org.jobs.gwt.JobsPoint/app.html</runTarget> <style>DETAILED</style> <noServer>true</noServer> <extraJvmArgs>-Xmx812m</extraJvmArgs>
 				<gwtVersion>${gwt.version}</gwtVersion> </configuration> <executions> <execution> <goals> <goal>mergewebxml</goal> <goal>compile</goal> <goal>gwt</goal>
@@ -358,6 +319,7 @@
 			-->
 			<!--
 				<plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> <executions> <execution> <id>unpack</id>
+
 				<phase>compile</phase> <goals> <goal>unpack</goal> </goals> <configuration> <artifactItems> <artifactItem> <groupId>com.google.gwt</groupId>
 				<artifactId>gwt-dev</artifactId> <version>${gwt.version}</version> <classifier>${platform}-libs</classifier> <type>zip</type> <overWrite>true</overWrite>
 				<outputDirectory>${settings.localRepository}/com/google/gwt/gwt-dev/${gwt.version}</outputDirectory> </artifactItem> </artifactItems> </configuration>
@@ -387,7 +349,7 @@
 			</plugin>
 
 		</plugins>
-		<finalName>jobs</finalName>
+		<finalName>camp</finalName>
 	</build>
 	<properties>
 		<cxf.version>2.2.3</cxf.version>
@@ -395,10 +357,7 @@
 		<spring.security.version>2.0.5.RELEASE</spring.security.version>
 		<spring.web.flow>2.0.5.RELEASE</spring.web.flow>
 		<gwt.version>2.0.0</gwt.version>
-		<!--gwt.version>1.7.0</gwt.version-->
-		<!--env.GWT_HOME>F:\environment\gwt\gwt</env.GWT_HOME-->
 		<platform>linux</platform>
-		<!--settings.localRepository>C:\Documents and Settings\vit\.m2\repository</settings.localRepository-->
 		<netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
