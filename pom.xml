@@ -11,6 +11,11 @@
 			<id>gwt-maven2</id>
 			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
 		</pluginRepository>
+	    <pluginRepository>
+      		<id>codehaus-snapshots-repository</id>
+		    <name>codehaus snapshots repository</name>
+      		<url>http://snapshots.repository.codehaus.org</url>
+    	</pluginRepository>
 	</pluginRepositories>
 
 	<repositories>
@@ -186,7 +191,7 @@
 		<!--
 			<dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-servlet</artifactId> <version>${gwt.version}</version> <scope>runtime</scope> </dependency>
 		-->
-
+<!-- 
 		<dependency>
 			<groupId>org.gwt</groupId>
 			<artifactId>mosaic</artifactId>
@@ -211,7 +216,34 @@
 			<version>0.2.4</version>
 			<scope>provided</scope>
 		</dependency>
+ -->
 
+<dependency>
+  <groupId>com.googlecode.gwtmosaic</groupId>
+  <artifactId>gwtx</artifactId>
+  <version>0.3.0-rc1</version>
+</dependency>
+
+ <dependency>
+  <groupId>com.googlecode.gwtmosaic</groupId>
+  <artifactId>gwt-beans-binding</artifactId>
+  <version>0.3.0-rc1</version>
+</dependency>
+
+<dependency>
+  <groupId>com.googlecode.gwtmosaic</groupId>
+  <artifactId>gwt-dnd</artifactId>
+  <version>0.3.0-rc1</version>
+</dependency>
+
+ <dependency>
+  <groupId>com.googlecode.gwtmosaic</groupId>
+  <artifactId>gwt-beans-binding</artifactId>
+  <version>0.3.0-rc1</version>
+</dependency>
+ 
+ 
+ 
 
 		<dependency>
 			<groupId>com.google.gwt</groupId>
@@ -219,7 +251,7 @@
 			<version>${gwt.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+		<!--
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
@@ -228,12 +260,17 @@
 			<type>zip</type>
 			<scope>provided</scope>
 		</dependency>
-		
+		-->
+		<dependency>
+			<groupId>com.extjs</groupId>
+			<artifactId>gxt</artifactId>
+			<version>2.0.1</version>
+		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-dev</artifactId>
 			<version>${gwt.version}</version>
-			<classifier>${platform}</classifier>
+			<!-- classifier>${platform}</classifier -->
 			<scope>provided</scope>
 		</dependency>
 		<!-- GWT end -->
@@ -284,7 +321,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
-				<version>1.1</version>
+				<version>1.2-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<configuration>
@@ -292,6 +329,8 @@
 						</configuration>
 						<goals>
 							<goal>compile</goal>
+							<goal>generateAsync</goal>
+              				<goal>test</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -355,10 +394,10 @@
 		<spring.version>2.5.6</spring.version>
 		<spring.security.version>2.0.5.RELEASE</spring.security.version>
 		<spring.web.flow>2.0.5.RELEASE</spring.web.flow>
-		<gwt.version>1.7.0</gwt.version>
+		<gwt.version>2.0.0</gwt.version>
 		<!--gwt.version>1.7.0</gwt.version-->
 		<!--env.GWT_HOME>F:\environment\gwt\gwt</env.GWT_HOME-->
-		<platform>windows</platform>
+		<platform>linux</platform>
 		<!--settings.localRepository>C:\Documents and Settings\vit\.m2\repository</settings.localRepository-->
 		<netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
