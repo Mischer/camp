@@ -42,6 +42,5 @@ public class MainModule implements EntryPoint {
 		simple.add(button);
 
 		RootPanel.get().add(simple);
-		simple.setLayout(new CenterLayout());
 	}
 }
