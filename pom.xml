@@ -196,12 +196,6 @@
 		</dependency>
 
 		<!--
-			<dependency> <groupId>org.gwt</groupId> <artifactId>mosaic</artifactId> <version>0.3.0-rc1</version> <scope>provided</scope> </dependency> <dependency>
-			<groupId>com.allen_sauer</groupId> <artifactId>gwt</artifactId> <version>2.6.5</version> <scope>provided</scope> </dependency> <dependency>
-			<groupId>com.google.gwt</groupId> <artifactId>libideas</artifactId> <version>r1684</version> <scope>provided</scope> </dependency> <dependency>
-			<groupId>org.gwt</groupId> <artifactId>beansbinding</artifactId> <version>0.2.4</version> <scope>provided</scope> </dependency>
-		-->
-		<!--
 			<dependency> <groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwtx</artifactId> <version>0.3.0-rc1</version> </dependency> <dependency>
 			<groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwt-beans-binding</artifactId> <version>0.3.0-rc1</version> </dependency> <dependency>
 			<groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwt-dnd</artifactId> <version>0.3.0-rc1</version> </dependency> <dependency>
@@ -305,6 +299,9 @@
 				<configuration>
 					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
 					<warSourceDirectory>war</warSourceDirectory>
+					<!--
+					<warSourceDirectory>src/main/webapp</warSourceDirectory> 
+					 -->
 				</configuration>
 			</plugin>
 
