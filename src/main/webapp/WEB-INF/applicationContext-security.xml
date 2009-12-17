@@ -7,10 +7,12 @@
 	</global-method-security>
 
 	<http auto-config="true">
+		<!-- 
 		<port-mappings>
 			<port-mapping http="9090" https="9443" />
 		</port-mappings>
-		<concurrent-session-control max-sessions="1" />
+		 -->
+		<concurrent-session-control max-sessions="2" />
 		
 		<intercept-url pattern="/*.*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />

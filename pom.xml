@@ -121,11 +121,11 @@
 
 
 		<!-- Endorsed Libraries  start -->
-		<!--
-			<dependency> <groupId>org.aspectj</groupId> <artifactId>aspectjrt</artifactId> <version>1.6.6</version> </dependency> <dependency>
-			<groupId>com.sun.xml.bind</groupId> <artifactId>jaxb-impl</artifactId> <version>2.1.2</version> </dependency> <dependency> <groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId> <version>2.1</version> </dependency>
-		-->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.6</version>
+		</dependency>
 		<!-- Endorsed Libraries  finish -->
 
 		<dependency>
@@ -158,7 +158,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.4</version>
+			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- Start JSF -->
@@ -273,16 +273,32 @@
 				<artifactId>gwt-maven-plugin</artifactId>
 				<version>1.2-SNAPSHOT</version>
 				<configuration>
+					<logLevel>INFO</logLevel>
+					<compileTargets>
+						<value>org.jobs.web.gwt.CampMain</value>
+					</compileTargets>
+					<runTarget>app.html</runTarget>
+					<style>DETAILED</style>
+					<noServer>false</noServer>
+					<extraJvmArgs>-Xmx712M -Xss128M</extraJvmArgs>
+					<i18nConstantsNames>
+						<value></value>
+					</i18nConstantsNames>
+					<i18nMessagesNames>
+						<value></value>
+					</i18nMessagesNames>
 					<disableCastChecking>true</disableCastChecking>
-                  	<disableClassMetadata>true</disableClassMetadata>
-					<runTarget>org.jobs.web.gwt.CampMain/app.html</runTarget>
+					<disableClassMetadata>true</disableClassMetadata>
+					<hostedWebapp>
+						${project.build.directory}/${project.build.finalName}
+					</hostedWebapp>
+					<gwtVersion>${gwt.version}</gwtVersion>
 				</configuration>
 				<executions>
 					<execution>
-						<configuration>
-							<extraJvmArgs>-Xmx812M -Xss1024k</extraJvmArgs>
-						</configuration>
 						<goals>
+							<goal>mergewebxml</goal>
+							<!--  goal>i18n</goal -->
 							<goal>compile</goal>
 							<!-- 
 							<goal>generateAsync</goal>
@@ -292,18 +308,15 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
-					<warSourceDirectory>war</warSourceDirectory>
-					<!--
-					<warSourceDirectory>src/main/webapp</warSourceDirectory> 
-					 -->
-				</configuration>
-			</plugin>
+			<!--
+				If you want to use the target/web.xml file mergewebxml produces, tell the war plugin to use it. Also, exclude what you want from the final artifact here.
+				<plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> <configuration> <webXml>target/web.xml</webXml>
+				<warSourceExcludes>.gwt-tmp/**</warSourceExcludes> </configuration> </plugin>
+			-->
+			<!--
+				<plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> <version>2.0.2</version> <configuration>
+				<webXml>src/main/webapp/WEB-INF/web.xml</webXml> <warSourceDirectory>war</warSourceDirectory> </configuration> </plugin>
+			-->
 
 			<!-- start deprecated -->
 			<!--

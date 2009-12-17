@@ -44,7 +44,7 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  <login-config>
+  <!-- login-config>
     <auth-method>BASIC</auth-method>
-  </login-config>
+  </login-config-->
 </web-app>
