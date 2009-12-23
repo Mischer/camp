@@ -119,7 +119,6 @@
 			<version>${spring.web.flow}</version>
 		</dependency>
 
-
 		<!-- Endorsed Libraries  start -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -138,18 +137,6 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.5.2</version>
 		</dependency>
-
-		<!-- start web service -->
-		<!--
-			<dependency> <groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-core</artifactId> <version>${cxf.version}</version> </dependency> <dependency>
-			<groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-frontend-simple</artifactId> <version>${cxf.version}</version> </dependency> <dependency>
-			<groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-frontend-jaxws</artifactId> <version>${cxf.version}</version> </dependency> <dependency>
-			<groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-transports-local</artifactId> <version>${cxf.version}</version> </dependency> <dependency>
-			<groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-transports-http</artifactId> <version>${cxf.version}</version> </dependency> <dependency>
-			<groupId>org.apache.cxf</groupId> <artifactId>cxf-common-utilities</artifactId> <version>${cxf.version}</version> </dependency>
-		-->
-		<!-- End web service -->
-
 		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -161,14 +148,6 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Start JSF -->
-		<!--
-			<dependency> <groupId>javax.faces</groupId> <artifactId>jsf-api</artifactId> <version>1.2_09-BETA1</version> </dependency> <dependency>
-			<groupId>javax.faces</groupId> <artifactId>jsf-impl</artifactId> <version>1.2_09-BETA1</version> </dependency> <dependency>
-			<groupId>com.sun.facelets</groupId> <artifactId>jsf-facelets</artifactId> <version>1.1.12</version> </dependency> <dependency>
-			<groupId>javax.servlet</groupId> <artifactId>jstl</artifactId> <version>1.2</version> </dependency>
-		-->
-		<!-- End JSF -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -187,42 +166,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<!-- GWT start -->
-
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-
 		<!--
-			<dependency> <groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwtx</artifactId> <version>0.3.0-rc1</version> </dependency> <dependency>
-			<groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwt-beans-binding</artifactId> <version>0.3.0-rc1</version> </dependency> <dependency>
-			<groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwt-dnd</artifactId> <version>0.3.0-rc1</version> </dependency> <dependency>
-			<groupId>com.googlecode.gwtmosaic</groupId> <artifactId>gwt-beans-binding</artifactId> <version>0.3.0-rc1</version> </dependency>
+			<dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-servlet</artifactId> <version>${gwt.version}</version> <scope>runtime</scope> </dependency>
+			<dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-user</artifactId> <version>${gwt.version}</version> <scope>provided</scope> </dependency>
+			<dependency> <groupId>com.extjs</groupId> <artifactId>gxt</artifactId> <version>2.1.0</version> </dependency>
 		-->
-
-
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<!--
-			<dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-dev</artifactId> <version>${gwt.version}</version> <classifier>${platform}-libs</classifier>
-			<type>zip</type> <scope>provided</scope> </dependency>
-		-->
-		<dependency>
-			<groupId>com.extjs</groupId>
-			<artifactId>gxt</artifactId>
-			<version>2.1.0</version>
-		</dependency>
-
-		<!--
-			<dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-dev</artifactId> <version>${gwt.version}</version> <scope>provided</scope> </dependency>
-		-->
-		<!-- classifier>${platform}</classifier -->
 		<!-- GWT end -->
 	</dependencies>
 
@@ -235,9 +183,11 @@
 					<source>1.6</source>
 					<target>1.6</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
+					<!-- 
 					<excludes>
 						<exclude>javax/servlet/**</exclude>
 					</excludes>
+					 -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -249,93 +199,18 @@
 					</includes>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>remove-javax</id>
-						<phase>compile</phase>
-						<configuration>
-							<tasks>
-								<delete dir="${project.build.directory}/classes/javax" />
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<version>1.2-SNAPSHOT</version>
-				<configuration>
-					<logLevel>INFO</logLevel>
-					<compileTargets>
-						<value>org.jobs.web.gwt.CampMain</value>
-					</compileTargets>
-					<runTarget>app.html</runTarget>
-					<style>DETAILED</style>
-					<noServer>false</noServer>
-					<extraJvmArgs>-Xmx712M -Xss128M</extraJvmArgs>
-					<i18nConstantsNames>
-						<value></value>
-					</i18nConstantsNames>
-					<i18nMessagesNames>
-						<value></value>
-					</i18nMessagesNames>
-					<disableCastChecking>true</disableCastChecking>
-					<disableClassMetadata>true</disableClassMetadata>
-					<hostedWebapp>
-						${project.build.directory}/${project.build.finalName}
-					</hostedWebapp>
-					<gwtVersion>${gwt.version}</gwtVersion>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>mergewebxml</goal>
-							<!--  goal>i18n</goal -->
-							<goal>compile</goal>
-							<!-- 
-							<goal>generateAsync</goal>
-              				<goal>test</goal>
-              				 -->
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 			<!--
-				If you want to use the target/web.xml file mergewebxml produces, tell the war plugin to use it. Also, exclude what you want from the final artifact here.
-				<plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> <configuration> <webXml>target/web.xml</webXml>
-				<warSourceExcludes>.gwt-tmp/**</warSourceExcludes> </configuration> </plugin>
+				<plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-antrun-plugin</artifactId> <executions> <execution> <id>remove-javax</id>
+				<phase>compile</phase> <configuration> <tasks> <delete dir="${project.build.directory}/classes/javax" /> </tasks> </configuration> <goals> <goal>run</goal>
+				</goals> </execution> </executions> </plugin> <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>gwt-maven-plugin</artifactId>
+				<version>1.2-SNAPSHOT</version> <configuration> <logLevel>INFO</logLevel> <compileTargets> <value>org.jobs.web.gwt.CampMain</value> </compileTargets>
+				<runTarget>app.html</runTarget> <style>DETAILED</style> <noServer>false</noServer> <extraJvmArgs>-Xmx712M -Xss128M</extraJvmArgs> <i18nConstantsNames>
+				<value></value> </i18nConstantsNames> <i18nMessagesNames> <value></value> </i18nMessagesNames> <disableCastChecking>true</disableCastChecking>
+				<disableClassMetadata>true</disableClassMetadata> <hostedWebapp> ${project.build.directory}/${project.build.finalName} </hostedWebapp>
+				<gwtVersion>${gwt.version}</gwtVersion> </configuration> <executions> <execution> <goals> <goal>mergewebxml</goal> <goal>compile</goal> </goals>
+				</execution> </executions> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> <version>2.0.2</version>
+				<configuration> <webXml>src/main/webapp/WEB-INF/web.xml</webXml> <warSourceDirectory>war</warSourceDirectory> </configuration> </plugin>
 			-->
-			<!--
-				<plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> <version>2.0.2</version> <configuration>
-				<webXml>src/main/webapp/WEB-INF/web.xml</webXml> <warSourceDirectory>war</warSourceDirectory> </configuration> </plugin>
-			-->
-
-			<!-- start deprecated -->
-			<!--
-				<plugin> <groupId>com.totsp.gwt</groupId> <artifactId>maven-googlewebtoolkit2-plugin</artifactId> <version>2.0-RC1</version> <configuration>
-
-				<logLevel>INFO</logLevel> <gwtHome>${env.GWT_HOME}</gwtHome> <compileTargets> <value>org.jobs.gwt.JobsPoint</value> </compileTargets>
-				<runTarget>org.jobs.gwt.JobsPoint/app.html</runTarget> <style>DETAILED</style> <noServer>true</noServer> <extraJvmArgs>-Xmx812m</extraJvmArgs>
-				<gwtVersion>${gwt.version}</gwtVersion> </configuration> <executions> <execution> <goals> <goal>mergewebxml</goal> <goal>compile</goal> <goal>gwt</goal>
-				</goals> </execution> </executions> </plugin>
-			-->
-			<!--
-				<plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> <executions> <execution> <id>unpack</id>
-
-				<phase>compile</phase> <goals> <goal>unpack</goal> </goals> <configuration> <artifactItems> <artifactItem> <groupId>com.google.gwt</groupId>
-				<artifactId>gwt-dev</artifactId> <version>${gwt.version}</version> <classifier>${platform}-libs</classifier> <type>zip</type> <overWrite>true</overWrite>
-				<outputDirectory>${settings.localRepository}/com/google/gwt/gwt-dev/${gwt.version}</outputDirectory> </artifactItem> </artifactItems> </configuration>
-				</execution> </executions> </plugin>
-			-->
-			<!-- end deprecated -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -362,12 +237,10 @@
 		<finalName>camp</finalName>
 	</build>
 	<properties>
-		<cxf.version>2.2.3</cxf.version>
 		<spring.version>2.5.6</spring.version>
 		<spring.security.version>2.0.5.RELEASE</spring.security.version>
 		<spring.web.flow>2.0.5.RELEASE</spring.web.flow>
 		<gwt.version>2.0.0</gwt.version>
-		<platform>linux</platform>
 		<netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

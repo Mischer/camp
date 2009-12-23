@@ -1,4 +1,4 @@
-<%@ taglib prefix='c' uri='http://java.sun.com/jstl/core_rt' %>
+<%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
 <%@ page import="org.springframework.security.ui.AbstractProcessingFilter" %>
 <%@ page import="org.springframework.security.ui.webapp.AuthenticationProcessingFilter" %>
 <%@ page import="org.springframework.security.AuthenticationException" %>
@@ -7,7 +7,6 @@
 	<head>
 	</head>
 	<body onload="document.f.j_username.focus();">
-
 		<div id="login">
 			<a href="#" title="">
 				<img style="width: 281px; height: 31px;" src="/images/logo.png" alt="Your Site Name" />

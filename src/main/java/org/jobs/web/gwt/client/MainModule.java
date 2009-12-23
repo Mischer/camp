@@ -1,5 +1,5 @@
 package org.jobs.web.gwt.client;
-
+/*
 import com.extjs.gxt.ui.client.event.ButtonEvent;
 import com.extjs.gxt.ui.client.event.SelectionListener;
 import com.extjs.gxt.ui.client.widget.Info;
@@ -44,3 +44,4 @@ public class MainModule implements EntryPoint {
 		RootPanel.get().add(simple);
 	}
 }
+*/
