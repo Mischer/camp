@@ -10,28 +10,28 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@SessionAttributes("login")
+@SessionAttributes("user")
 public class UserController {
 
 	@Autowired
 	UsersManager usersManager;
 	
-	@RequestMapping("/order/list")
+	@RequestMapping("/user/list")
 	public ModelAndView list() {
-		ModelAndView view = new ModelAndView("order/list");
+		ModelAndView view = new ModelAndView("user/list");
 		return view;
 	}
 
-	@RequestMapping(value="/order/edit",method=RequestMethod.GET)
+	@RequestMapping(value="/user/edit",method=RequestMethod.GET)
 	public ModelAndView edit(@RequestParam(value="id", required=true) long id) {
-		ModelAndView view = new ModelAndView("order/edit");
+		ModelAndView view = new ModelAndView("user/edit");
 		view.addObject("user", usersManager.getUser(id));
 		return view;
 	}
 
-	@RequestMapping("/order/view")
+	@RequestMapping("/user/view")
 	public ModelAndView view() {
-		ModelAndView view = new ModelAndView("order/edit");
+		ModelAndView view = new ModelAndView("user/edit");
 		return view;
 	}
 }

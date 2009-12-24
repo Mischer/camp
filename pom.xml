@@ -165,6 +165,11 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+    		<groupId>org.apache.tiles</groupId>
+    		<artifactId>tiles-jsp</artifactId>
+    		<version>${tiles.version}</version>
+		</dependency>
 		<!-- GWT start -->
 		<!--
 			<dependency> <groupId>com.google.gwt</groupId> <artifactId>gwt-servlet</artifactId> <version>${gwt.version}</version> <scope>runtime</scope> </dependency>
@@ -244,6 +249,7 @@
 		<finalName>camp</finalName>
 	</build>
 	<properties>
+		<tiles.version>2.0.7</tiles.version>
 		<spring.version>2.5.6</spring.version>
 		<spring.security.version>2.0.5.RELEASE</spring.security.version>
 		<spring.web.flow>2.0.5.RELEASE</spring.web.flow>

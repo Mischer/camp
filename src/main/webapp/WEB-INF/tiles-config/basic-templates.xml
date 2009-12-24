@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC       
+		"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"       
+		"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name=".mainTemplate" template="/WEB-INF/view/main.jsp">
+		<put-attribute name="title" value="Camp" />
+		<put-attribute name="header" value="/WEB-INF/view/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/view/menu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/blank.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
+	</definition>
+	<definition name="login" extends=".mainTemplate">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="header" value="/WEB-INF/view/blank.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/view/blank.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/login.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/view/blank.jsp" />
+	</definition>
+	<definition name="main" extends=".mainTemplate">
+		<put-attribute name="title" value="Welcome to Camp" />
+		<put-attribute name="body" value="/WEB-INF/view/body.jsp" />
+	</definition>
+	
+	
+	<definition name="user/list" extends=".mainTemplate">
+		<put-attribute name="title" value="User list" />
+		<put-attribute name="body" value="/WEB-INF/view/user/list.jsp" />
+	</definition>
+	<definition name="user/view" extends=".mainTemplate">
+		<put-attribute name="title" value="User list" />
+		<put-attribute name="body" value="/WEB-INF/view/user/edit.jsp" />
+	</definition>
+	<definition name="user/edit" extends=".mainTemplate">
+		<put-attribute name="title" value="User list" />
+		<put-attribute name="body" value="/WEB-INF/view/user/edit.jsp" />
+	</definition>
+
+
+	<definition name="order/list" extends=".mainTemplate">
+		<put-attribute name="title" value="Order list" />
+		<put-attribute name="body" value="/WEB-INF/view/order/list.jsp" />
+	</definition>
+	<definition name="order/view" extends=".mainTemplate">
+		<put-attribute name="title" value="Order list" />
+		<put-attribute name="body" value="/WEB-INF/view/order/edit.jsp" />
+	</definition>
+	<definition name="order/edit" extends=".mainTemplate">
+		<put-attribute name="title" value="Order list" />
+		<put-attribute name="body" value="/WEB-INF/view/order/edit.jsp" />
+	</definition>
+	
+</tiles-definitions>

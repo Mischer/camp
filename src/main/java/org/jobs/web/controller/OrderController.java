@@ -10,28 +10,28 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@SessionAttributes("login")
+@SessionAttributes("order")
 public class OrderController {
 
 	@Autowired
 	ProcessManager processManager;
 
-	@RequestMapping("/user/list")
+	@RequestMapping("/order/list")
 	public ModelAndView list() {
-		ModelAndView view = new ModelAndView("user/list");
+		ModelAndView view = new ModelAndView("order/list");
 		return view;
 	}
 
-	@RequestMapping(value = "/user/edit", method = RequestMethod.GET)
+	@RequestMapping(value = "/order/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam(value = "id", required = true) long id) {
-		ModelAndView view = new ModelAndView("user/edit");
-		view.addObject("user", processManager.getOrder(id));
+		ModelAndView view = new ModelAndView("order/edit");
+		view.addObject("order", processManager.getOrder(id));
 		return view;
 	}
 
-	@RequestMapping("/user/view")
+	@RequestMapping("/order/view")
 	public ModelAndView view() {
-		ModelAndView view = new ModelAndView("user/edit");
+		ModelAndView view = new ModelAndView("order/edit");
 		return view;
 	}
 }
