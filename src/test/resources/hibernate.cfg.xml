@@ -24,11 +24,23 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping class="org.jobs.persistence.bean.Group" />
-        <mapping class="org.jobs.persistence.bean.User" />
-        <mapping class="org.jobs.persistence.bean.Role" />        
+		<mapping class="org.jobs.persistence.bean.Group" />
+		<mapping class="org.jobs.persistence.bean.User" />
+		<mapping class="org.jobs.persistence.bean.Role" />
 		<mapping class="org.jobs.persistence.bean.Order" />
 		<mapping class="org.jobs.persistence.bean.Client" />
+		
+		<mapping class="org.jobs.persistence.bean.Service" />
+		<mapping class="org.jobs.persistence.bean.Sesson" />
+		<mapping class="org.jobs.persistence.bean.Staff" />
+		<mapping class="org.jobs.persistence.bean.StaffType" />
+		<mapping class="org.jobs.persistence.bean.User" />
+		
+		<mapping class="org.jobs.persistence.bean.camp.Camp" />
+		<mapping class="org.jobs.persistence.bean.camp.CampGroup" />
+		
+		<mapping class="org.jobs.persistence.bean.medical.Medical" />
+		<mapping class="org.jobs.persistence.bean.medical.MedicalType" />		
 				
     </session-factory>
 
