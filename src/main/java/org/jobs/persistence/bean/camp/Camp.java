@@ -1,7 +1,14 @@
 package org.jobs.persistence.bean.camp;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,19 +23,15 @@ public class Camp extends Service {
 	@Column(name="desciption")
 	private String descriptions;
 
-	@OneToMany
-	private CampGroup campGroup; 
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="camp_campGroup", 
+			joinColumns={ @JoinColumn(name="camp_id")},
+			inverseJoinColumns={@JoinColumn(name="campGroup_id")}
+	)	
+	private Set<CampGroup> campGroups = new HashSet<CampGroup>(); 
 	
 	public Camp() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public CampGroup getCampGroup() {
-		return campGroup;
-	}
-
-	public void setCampGroup(CampGroup campGroup) {
-		this.campGroup = campGroup;
 	}
 
 	public String getDescriptions() {
@@ -37,6 +40,14 @@ public class Camp extends Service {
 
 	public void setDescriptions(String descriptions) {
 		this.descriptions = descriptions;
+	}
+
+	public Set<CampGroup> getCampGroups() {
+		return campGroups;
+	}
+
+	public void setCampGroups(Set<CampGroup> campGroups) {
+		this.campGroups = campGroups;
 	}
 	
 }

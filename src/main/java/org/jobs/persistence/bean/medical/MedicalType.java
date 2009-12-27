@@ -2,11 +2,16 @@ package org.jobs.persistence.bean.medical;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.jobs.persistence.bean.Staff;
@@ -27,7 +32,8 @@ public class MedicalType implements Serializable {
 	@Column(name="description")
 	private String description;
 	
-	@Column(name="answerableDoctor")
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="doctor_id")
 	private Staff answerable_doctor;
 	
 	

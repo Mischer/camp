@@ -2,12 +2,19 @@ package org.jobs.persistence.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,8 +40,12 @@ public class Staff implements Serializable {
 	private String phone;
 	@Column(name = "birthday")
 	private Date birthday;
-	@Column(name = "staffType")
-	private StaffType staffType;
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="staff_staffType", 
+			joinColumns={ @JoinColumn(name="staff_id")},
+			inverseJoinColumns={@JoinColumn(name="staffType_id")}
+	)	
+	private Set<StaffType> staffTypes = new HashSet<StaffType>();
 
 	public Staff() {
 		// TODO Auto-generated constructor stub
@@ -104,12 +115,12 @@ public class Staff implements Serializable {
 		this.birthday = birthday;
 	}
 
-	public StaffType getStaffType() {
-		return staffType;
+	public Set<StaffType> getStaffTypes() {
+		return staffTypes;
 	}
 
-	public void setStaffType(StaffType staffType) {
-		this.staffType = staffType;
+	public void setStaffTypes(Set<StaffType> staffTypes) {
+		this.staffTypes = staffTypes;
 	}
 
 }

@@ -1,7 +1,14 @@
 package org.jobs.persistence.bean.medical;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,12 +23,14 @@ public class Medical extends Service {
 	@Column(name="desciption")
 	private String descriptions;
 	
-	
-	@OneToMany
-	private MedicalType medicalType;	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="medical_medicalType", 
+			joinColumns={ @JoinColumn(name="medical_id")},
+			inverseJoinColumns={@JoinColumn(name="medicalType_id")}
+	)	
+	private Set<MedicalType> medicalTypes = new HashSet<MedicalType>();	
 	
 	public Medical() {
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -34,13 +43,13 @@ public class Medical extends Service {
 	}
 
 
-	public MedicalType getMedicalType() {
-		return medicalType;
+	public Set<MedicalType> getMedicalTypes() {
+		return medicalTypes;
 	}
 
 
-	public void setMedicalType(MedicalType medicalType) {
-		this.medicalType = medicalType;
+	public void setMedicalTypes(Set<MedicalType> medicalTypes) {
+		this.medicalTypes = medicalTypes;
 	}
-
+	
 }
