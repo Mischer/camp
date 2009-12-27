@@ -3,14 +3,18 @@ package org.jobs.persistence.bean.camp;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.jobs.persistence.bean.Client;
 import org.jobs.persistence.bean.Sesson;
 import org.jobs.persistence.bean.Staff;
 
+@Entity
+@Table(name="camp_group")
 public class CampGroup implements Serializable {
 
 	private static final long serialVersionUID = 1L;

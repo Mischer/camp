@@ -2,6 +2,7 @@ package org.jobs.persistence.bean.medical;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.jobs.persistence.bean.Service;
@@ -15,7 +16,8 @@ public class Medical extends Service {
 	@Column(name="desciption")
 	private String descriptions;
 	
-	@Column(name="medicalType")
+	
+	@OneToMany
 	private MedicalType medicalType;	
 	
 	public Medical() {

@@ -2,6 +2,7 @@ package org.jobs.persistence.bean.camp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.jobs.persistence.bean.Service;
@@ -15,7 +16,7 @@ public class Camp extends Service {
 	@Column(name="desciption")
 	private String descriptions;
 
-	@Column()
+	@OneToMany
 	private CampGroup campGroup; 
 	
 	public Camp() {
