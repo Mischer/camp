@@ -2,44 +2,53 @@ package org.jobs.persistence.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "client")
-public class Client implements Serializable {
+@Table(name = "staff")
+public class Staff implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	@Column(name = "firstName")
 	private String firstName;
-	@Column(name = "lastName", nullable = false)
+	@Column(name = "lastName")
 	private String lastName;
 	@Column(name = "middleName")
 	private String middleName;
-	@Column(name = "address", nullable = false)
+	@Column(name = "address")
 	private String address;
-	@Temporal(TemporalType.DATE)
+	@Column(name = "email")
+	private String email;
+	@Column(name = "phone")
+	private String phone;
 	@Column(name = "birthday")
 	private Date birthday;
-	@Column(name="email")
-	private String email;
-	@Column(name="phone")
-	private String phone;
-	@Column(name="fax")
-	private String fax;
-	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="staff_staffType", 
+			joinColumns={ @JoinColumn(name="staff_id")},
+			inverseJoinColumns={@JoinColumn(name="staffType_id")}
+	)	
+	private Set<StaffType> staffTypes = new HashSet<StaffType>();
 
-	public Client() {
+	public Staff() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Long getId() {
@@ -82,14 +91,6 @@ public class Client implements Serializable {
 		this.address = address;
 	}
 
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -106,12 +107,20 @@ public class Client implements Serializable {
 		this.phone = phone;
 	}
 
-	public String getFax() {
-		return fax;
+	public Date getBirthday() {
+		return birthday;
 	}
 
-	public void setFax(String fax) {
-		this.fax = fax;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public Set<StaffType> getStaffTypes() {
+		return staffTypes;
+	}
+
+	public void setStaffTypes(Set<StaffType> staffTypes) {
+		this.staffTypes = staffTypes;
 	}
 
 }
