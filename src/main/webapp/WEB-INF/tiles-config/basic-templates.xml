@@ -12,7 +12,7 @@
 	</definition>
 	<definition name="login" extends=".mainTemplate">
 		<put-attribute name="title" value="Login" />
-		<put-attribute name="header" value="/WEB-INF/view/blank.jsp" />
+		<put-attribute name="header" value="/WEB-INF/view/stdHeader.jsp" />
 		<put-attribute name="menu" value="/WEB-INF/view/blank.jsp" />
 		<put-attribute name="body" value="/WEB-INF/view/login.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/view/blank.jsp" />
@@ -21,7 +21,13 @@
 		<put-attribute name="title" value="Welcome to Camp" />
 		<put-attribute name="body" value="/WEB-INF/view/body.jsp" />
 	</definition>
-	
+	<definition name="registration" extends=".mainTemplate">
+		<put-attribute name="title" value="Registration" />
+		<put-attribute name="header" value="/WEB-INF/view/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/view/blank.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/registration/registrationView.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
+	</definition>	
 	
 	<definition name="user/list" extends=".mainTemplate">
 		<put-attribute name="title" value="User list" />
@@ -50,4 +56,5 @@
 		<put-attribute name="body" value="/WEB-INF/view/order/edit.jsp" />
 	</definition>
 	
+
 </tiles-definitions>
