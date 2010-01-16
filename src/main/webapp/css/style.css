@@ -334,3 +334,12 @@ p#intro {font-size: 24px;
                 clear: both;
                 margin-top: 11px;
                 padding: 0;}
+                
+.form-item { margin: 5px 0; }
+
+.form-label { font-weight: bold; }
+
+.form-error-field { background-color: #FFC; }
+
+.form-error-message { font-weight: bold; color: #900; }
+                

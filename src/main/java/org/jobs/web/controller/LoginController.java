@@ -13,7 +13,7 @@ public class LoginController {
 
 	@Autowired
 	UsersManager usersManager;
-	
+		
 	@RequestMapping("/login")
 	public ModelAndView login() {
 		ModelAndView view = new ModelAndView("login");
@@ -25,16 +25,5 @@ public class LoginController {
 		ModelAndView view = new ModelAndView("main");
 		return view;
 	}
-	
-	@RequestMapping("/registration/registrationView")
-	public ModelAndView registration() {
-		ModelAndView view = new ModelAndView("registration");
-		return view;
-	}
-	
-	@RequestMapping("/registration/registrationClient")
-	public ModelAndView registrationClient() {
-		ModelAndView view = new ModelAndView("registrationClient");
-		return view;
-	}
+
 }

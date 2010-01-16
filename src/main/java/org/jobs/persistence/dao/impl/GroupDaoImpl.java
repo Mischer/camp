@@ -8,7 +8,8 @@ import java.util.List;
 
 import org.jobs.persistence.bean.Group;
 import org.jobs.persistence.dao.GroupDao;
-
+import org.springframework.stereotype.Repository;
+@Repository
 public class GroupDaoImpl extends DaoImpl<Group> implements GroupDao {
 
 	public GroupDaoImpl() {

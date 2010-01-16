@@ -40,6 +40,10 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     
+    <bean id="clientDao" class="org.jobs.persistence.dao.impl.ClientDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
 	<!-- WS Bean -->
 
     <bean id="usersManager" class="org.jobs.ws.bean.UsersManagerBean">

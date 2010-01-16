@@ -29,8 +29,8 @@ public class Client implements Serializable {
 	@Column(name = "address", nullable = false)
 	private String address;
 	@Temporal(TemporalType.DATE)
-	@Column(name = "birthday")
-	private Date birthday;
+	@Column(name = "birthday", insertable = false, updatable = false )
+	private Date birthday = new Date();
 	@Column(name="email")
 	private String email;
 	@Column(name="phone")

@@ -8,7 +8,8 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.jobs.persistence.bean.Order;
 import org.jobs.persistence.dao.OrderDao;
-
+import org.springframework.stereotype.Repository;
+@Repository
 @SuppressWarnings("unchecked")
 public class OrderDaoImpl extends DaoImpl<Order> implements OrderDao {
 

@@ -13,6 +13,7 @@ public abstract class DaoImpl<T> extends HibernateDaoSupport implements Dao<T> {
 	}
 
 	public void create(T instance) {
+		
 		getHibernateTemplate().persist(instance);
 	}
 

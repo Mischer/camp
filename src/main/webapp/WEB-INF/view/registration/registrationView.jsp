@@ -1,52 +1,55 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
-Please Check this field for REGESTRATION 
+<%@ taglib prefix="spring"  uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form"    uri="http://www.springframework.org/tags/form" %>
 
-<div id="registrationClient">
+Please Check this field for REGESTRATION VIEW 		 
 
-				<form id="registrationClient" method="post" action="<c:url value='/login'/>">
-					<table>
-						<tr>
-							<td><label for="j_username">login</label></td>
-							<td><input type="text" name="j_username" required="true" /></td>
-						</tr>
-						<tr>
-							<td><label for="j_password">password</label></td>
-							<td><input type="password" required="true" name="j_password" /></td>
-						</tr>
-						<tr>
-							<td><label for="j_lastname">lastname</label></td>
-							<td><input type="text" required="true" name="j_lastname" /></td>
-						</tr>
-						<tr>
-							<td><label for="j_firstname">firstname</label></td>
-							<td><input type="text" required="true" name="j_firstname" /></td>
-						</tr>
-						<tr>
-							<td><label for="j_middleName">middleName</label></td>
-							<td><input type="text" required="true" name="j_middleName" /></td>
-						</tr>
-						<tr>
-							<td><label for="j_address">address</label></td>
-							<td><input type="text" required="true" name="j_address" /></td>
-						</tr>
-						<tr>
-							<td><label for="j_birthday">birthday</label></td>
-							<td><input type="text" required="true" name="j_birthday" /></td>
-						</tr>
-						<tr>
-							<td><label for="j_email">email</label></td>
-							<td><input type="text" required="true" name="j_email" /></td>
-						</tr>
-						<tr>
-							<td><label for="j_phone">phone</label></td>
-							<td><input type="text" required="true" name="j_phone" /></td>
-						</tr>
-						<tr>
-							<td><label for="j_fax">fax</label></td>
-							<td><input type="text" required="true" name="j_fax" /></td>
-						</tr>
-					</table>
-					<input type="submit" style="float: left;" value="RegistrationClient" />
-				</form>
+<div id="registrationView">
+
+<form:form commandName="clientForm" method="post" action="registrationView">
+
+	<table>
+			<tr>
+				<td><label for="lastName">lastname</label></td>
+				<td><form:input path="lastName" /></td>
+			</tr>
+			<tr>
+				<td><label for="firstName">firstname</label></td>
+				<td><form:input path="firstName" /></td>
+			</tr>
+			<tr>
+				<td><label for="middleName">middleName</label></td>
+				<td><form:input path="middleName" /></td>
+			</tr>
+			<tr>
+				<td><label for="address">address</label></td>
+				<td><form:input path="address" /></td>
+			</tr>
+			<tr>
+				<td><label for="birthday">birthday</label></td>
+				<td><form:input path="birthday" /></td>
+			</tr>
+			<tr>
+				<td><label for="email">email</label></td>
+				<td><form:input path="email" /></td>
+			</tr>
+			<tr>
+				<td><label for="phone">phone</label></td>
+				<td><form:input path="phone" /></td>
+			</tr>
+			<tr>
+				<td><label for="fax">fax</label></td>
+				<td><form:input path="fax" /></td>
+			</tr>
+
+<tr>
+<td>Приветствуем вас
+		<c:out value="${clients.firstName}" />
+</td>
+</tr>			
+		</table>
+	<input type="submit" value="RegistrationClient" />
+	
+</form:form>
 </div>

@@ -11,7 +11,8 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.jobs.persistence.bean.User;
 import org.jobs.persistence.dao.UserDao;
-
+import org.springframework.stereotype.Repository;
+@Repository
 public class UserDaoImpl extends DaoImpl<User> implements UserDao {
 
 	public UserDaoImpl() {
