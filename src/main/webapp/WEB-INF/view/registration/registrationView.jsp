@@ -46,6 +46,8 @@ Please Check this field for REGESTRATION VIEW
 <tr>
 <td>Приветствуем вас
 		<c:out value="${clients.firstName}" />
+		</br>
+		<c:out value="${clients.lastName}" />
 </td>
 </tr>			
 		</table>
